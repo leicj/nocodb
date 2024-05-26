@@ -311,10 +311,11 @@ const customReqCbk = (customReqArgs: { file: any; onSuccess: () => void }) => {
 }
 
 /** check if the file size exceeds the limit */
+// 最大支持10M
 const beforeUpload = (file: UploadFile) => {
-  const exceedLimit = file.size! / 1024 / 1024 > 5
+  const exceedLimit = file.size! / 1024 / 1024 > 10
   if (exceedLimit) {
-    message.error(`File ${file.name} is too big. The accepted file size is less than 5MB.`)
+    message.error(`File ${file.name} is too big. The accepted file size is less than 10MB.`)
   }
   return !exceedLimit || Upload.LIST_IGNORE
 }

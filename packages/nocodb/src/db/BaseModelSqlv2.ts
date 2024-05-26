@@ -4562,6 +4562,10 @@ class BaseModelSqlv2 {
       column.uidt === UITypes.MultiSelect
         ? columnValue.split(',')
         : [columnValue];
+    // 去除左右空格
+    for (let j=0;j<columnValueArr.length;j++){
+      columnValueArr[j]=columnValueArr[j].trim();
+    }
     for (let j = 0; j < columnValueArr.length; ++j) {
       const val = columnValueArr[j];
       if (!options.includes(val) && !options.includes(`'${val}'`)) {
